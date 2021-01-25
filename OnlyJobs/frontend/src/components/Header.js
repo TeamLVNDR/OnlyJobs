@@ -4,10 +4,11 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+
 const useStyles = makeStyles((theme) => ({
   toolbar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
-    backgroundColor: '#0B132B',
+    backgroundColor: theme.palette.primary.main,
     color: '#FFFFFF',
   },
   toolbarTitle: {
@@ -33,7 +34,7 @@ export default function Header(props) {
 
   return (
     <React.Fragment>
-      <Toolbar className={classes.toolbar}>
+      <Toolbar className={classes.toolbar} color="secondary" >
         <Typography
           component="h2"
           variant="h5"
