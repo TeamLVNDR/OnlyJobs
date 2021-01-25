@@ -17,7 +17,7 @@ def loadJobs():
     driver.get(url)
     label = driver.find_element_by_class_name("vWdgBe")
     label.click()
-    count = 0
+    
     
     while True:
         height = label.size["height"]
