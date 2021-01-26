@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_backend',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [
@@ -58,7 +59,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'frontend/build'),
+            #os.path.join(BASE_DIR, 'frontend/build'),
+            os.path.join(BASE_DIR, 'templates_placeholder')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -124,6 +126,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend/build/static'),
+    os.path.join(BASE_DIR, 'static'),
+    #os.path.join(BASE_DIR, 'frontend/build/static'),
 
 ]
