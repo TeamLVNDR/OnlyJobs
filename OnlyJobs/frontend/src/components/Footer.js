@@ -1,7 +1,9 @@
 import { makeStyles, Typography } from "@material-ui/core"
 
 const useStyles = makeStyles((theme) => ({
-    
+    hold: {
+
+    }
 }))
 
 
@@ -11,7 +13,7 @@ const Footer = () => {
     return (
         <div>
             <footer>
-                <Typography variant="body1">My sticky footer can be found here.</Typography>
+                <Typography className={classes.hold} variant="body1">My sticky footer can be found here.</Typography>
             </footer>
         </div>
     )
