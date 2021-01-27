@@ -97,13 +97,6 @@ const DesktopHeader = () => {
 export default function Header(props) {
   const { width } = useViewport();
   const breakpoint = 1000;
-  if (width > breakpoint){
-    return <DesktopHeader />
-  }
-  else {
-    return (
-      <h1>test</h1>
-    )
-  }
+  return width > breakpoint ? <DesktopHeader /> : <h1>Smaller than breakpoint</h1>
 
 }
