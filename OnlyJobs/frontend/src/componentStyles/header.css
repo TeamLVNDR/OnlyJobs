@@ -9,7 +9,7 @@
 .vr {
     box-sizing: border-box;
     display: inline-block;
-    border-left: 1px solid white;
     margin-bottom: -10px;
-    height: 30px
+    background-color: white;
+    width: 10px;;
 }

@@ -18,8 +18,7 @@ const useStyles = makeStyles((theme) => ({
   underline: {
     color: 'white',
     borderBottom: '2px solid white',
-    width: '25vw',
-    margin: '0 10px'
+    width: '25vw'
   },
   headerWrapper: {
     display: 'flex',
@@ -27,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100% '
   },
   toolbarTitle: {
-    flex: 1
+    flex: '1 0'
   },
   toolbarSearch: {
     flex: 3
@@ -72,7 +71,7 @@ const DesktopHeader = () => {
 
           <form autoComplete="off" noValidate className={classes.toolbarSearch}>
             <Input placeholder="Search by Job Title" variant="filled" inputProps={{'aria-label': 'description', className:classes.underline}} color='secondary'/>
-            {/* <div className="vr"></div> */}
+            <div className="vr"></div>
             <Input placeholder="Search by Location" variant="filled" inputProps={{'aria-label': 'description', className:classes.underline}} color='secondary'/>
           </form>
 
@@ -97,7 +96,7 @@ const DesktopHeader = () => {
 
 export default function Header(props) {
   const { width } = useViewport();
-  const breakpoint = 620;
+  const breakpoint = 1000;
   if (width > breakpoint){
     return <DesktopHeader />
   }
