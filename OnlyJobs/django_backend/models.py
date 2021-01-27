@@ -3,21 +3,23 @@ from django.db import models
 # Create your models here.
 
 class JobListing(models.Model):
-    company = models.CharField(max_length= 50)
-    job_title = models.CharField(max_length= 50)
-    job_salary = models.PositiveIntegerField()
-    work_schedule = models.CharField(max_length= 10)
-    technologies = models.CharField(max_length= 50)
-    date_posted = models.CharField(max_length= 50)
+    company = models.CharField(max_length= 50 , default= None)
+    job_title = models.CharField(max_length= 50 , default= None)
+    job_salary = models.PositiveIntegerField( default= None)
+    work_schedule = models.CharField(max_length= 10,  default= None)
+    technologies = models.CharField(max_length= 50 ,  default= None)
+    date_posted = models.CharField(max_length= 50 ,   default= None)
 
-    logo_url = models.URLField()
-    job_description = models.CharField(max_length= 50)
+    job_deadline = models.CharField(max_length= 50 ,   default= None)
 
-    job_location = models.CharField(max_length= 50)
+    logo_url = models.URLField(  default= None)
+    job_description = models.CharField(max_length= 50,   default= None)
 
-    job_url_1 = models.URLField()
-    job_url_2 = models.URLField()
-    job_url_3 = models.URLField()
+    job_location = models.CharField(max_length= 50, default= None)
+
+    job_url_1 = models.URLField(default= None)
+    job_url_2 = models.URLField(default= None)
+    job_url_3 = models.URLField(default= None)
 
 
     # to add
