@@ -6,16 +6,17 @@ import time
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-f
+
 
 
 headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36'}
 import sys
 print(sys.path)
+PATH = "C:\Program Files (x86)\chromedriver.exe"
 # Google job search
 def loadJobs():
     url = ('https://www.google.com/search?rlz=1C1CHBD_en-GBGB764GB764&sxsrf=ALeKk02hvTzDh0vo9EZtzEhPq00BzmMgZw:1611573037924&ei=LacOYLnzN86U8gLavbPACA&q=software+engineering+graduate&oq=jobs&gs_lcp=CgZwc3ktYWIQAzIECAAQQzIFCAAQkQIyBQgAEJECMgoIABCxAxCDARBDMgQIABBDMgQIABBDMgQIABBDMgIIADINCAAQsQMQgwEQyQMQQzIFCAAQkgM6BAgjECc6CwguELEDEMcBEKMCOggIABCxAxCDAToHCC4QJxCTAlCSlwJYlqACYJahAmgAcAJ4AIABW4gBwAKSAQE0mAEAoAEBqgEHZ3dzLXdpesABAQ&sclient=psy-ab&uact=5&ibp=htl;jobs&sa=X&ved=2ahUKEwjfmqbo-bbuAhVMSsAKHZ-rDK0QutcGKAB6BAgKEAQ#fpstate=tldetail&htivrt=jobs&htilrad=-1.0&htidocid=Ql4cssGjAIftPMUtAAAAAA%3D%3D')
-    driver = webdriver.Chrome(executable_path=r".\chromedriver.exe")
+    driver = webdriver.Chrome(PATH)
     driver.get(url)
     label = driver.find_element_by_class_name("vWdgBe")
     label.click()
