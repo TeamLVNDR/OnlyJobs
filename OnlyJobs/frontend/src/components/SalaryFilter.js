@@ -6,19 +6,22 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 const useStyles = makeStyles((theme) => ({
     popoverContainer:{
         width: '300px',
-        height: '150px',
-        backgroundColor: theme.palette.boxBackground.main,
+        height: '110px',
+        backgroundColor: 'white',
         padding: '20px 20px',
         boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.05)',
         borderRadius: '10px',
     },
     buttonColors: {
-        color: 'rgba(0, 0, 0, 0.5)',
+        color: 'rgba(109, 109, 109)',
         border: `1px solid ${theme.palette.filterButton.main}`,
         "&:hover": {
             border: '1px solid black',
             backgroundColor: 'transparent'
         },
+        textTransform: 'none',
+        fontWeight: 400,
+        fontSize: '1rem'
     },
 }))
 

@@ -15,7 +15,7 @@ export const theme = createMuiTheme({
         main: '#133B571A'
       },
       filterButton: {
-        main: 'rgba(0, 0, 0, 0.17)'
+        main: 'rgba(183, 183, 183)'
       }
     }
   })
