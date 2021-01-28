@@ -4,8 +4,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import '../componentStyles/header.css'
-import { Input } from '@material-ui/core';
+import { IconButton, Input, Menu, MenuItem } from '@material-ui/core';
 import { useViewport } from '../hooks'
+import MenuIcon from '@material-ui/icons/Menu'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -13,41 +14,23 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: `1px solid ${theme.palette.divider}`,
     backgroundColor: theme.palette.primary.main,
     color: '#FFFFFF',
-    padding: '15px 50px'
+    padding: '15px 50px',
+    height: '66px'
   },
   underline: {
     color: 'white',
     borderBottom: '2px solid white',
-    width: '25vw'
+    width: '25vw',    
   },
   headerWrapper: {
     display: 'flex',
     justifyContent: 'space-between',
-    width: '100% '
+    width: '100vw',
+    alignItems: 'center'
   },
-  toolbarTitle: {
-    flex: '1 0'
-  },
-  toolbarSearch: {
-    flex: 3
-  },
-  toolbarButtons: {
-    flex: 1,
-  },
-  
-  // toolbarSecondary: {
-  //   justifyContent: 'space-between',
-  //   overflowX: 'auto',
-  // },
-  // toolbarLink: {
-  //   padding: theme.spacing(1),
-  //   flexShrink: 0,
-  // },
-//   lightBtn: {
-//       color: theme.palette.primary.contrastText,
-//       border : `1px solid ${theme.palette.primary.contrastText}`
-//   },
-
+  searchButton: {
+    marginLeft: '20px'
+  }
 }));
 
 const DesktopHeader = () => {
@@ -64,27 +47,24 @@ const DesktopHeader = () => {
             color="inherit"
             align="left"
             noWrap
-            className={classes.toolbarTitle}
           >
             Only Jobs
           </Typography>
 
-          <form autoComplete="off" noValidate className={classes.toolbarSearch}>
+          <form autoComplete="off" noValidate >
             <Input placeholder="Search by Job Title" variant="filled" inputProps={{'aria-label': 'description', className:classes.underline}} color='secondary'/>
             <div className="vr"></div>
             <Input placeholder="Search by Location" variant="filled" inputProps={{'aria-label': 'description', className:classes.underline}} color='secondary'/>
+            <Button className={classes.searchButton} variant="contained" color="secondary">Search</Button>
           </form>
 
-          <div className={classes.toolbarButtons}>
-            <div className="test">
+          <div>
               <Button className="btn" variant="outlined" color='secondary'>
                 Log In
               </Button>
               <Button className="btn" variant="contained" color='secondary'>
                 Sign up
               </Button>
-
-            </div>
 
           </div>
 
@@ -94,9 +74,73 @@ const DesktopHeader = () => {
   )
 }
 
+const MobileHeader = () => {
+
+  const classes = useStyles();
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  return (
+    <React.Fragment>
+      <Toolbar className={classes.header} color="secondary" >
+        <div className={classes.headerWrapper}>
+          <Typography
+            component="h2"
+            variant="h5"
+            color="inherit"
+            align="left"
+            noWrap
+          >
+            Only Jobs
+          </Typography>
+
+          {/* <form autoComplete="off" noValidate >
+            <Input placeholder="Search by Job Title" variant="filled" inputProps={{'aria-label': 'description', className:classes.underline}} color='secondary'/>
+            <div className="vr"></div>
+            <Input placeholder="Search by Location" variant="filled" inputProps={{'aria-label': 'description', className:classes.underline}} color='secondary'/>
+            <Button className={classes.searchButton} variant="contained" color="secondary">Search</Button>
+          </form> */}
+
+          {/* <div>
+              <Button className="btn" variant="outlined" color='secondary'>
+                Log In
+              </Button>
+              <Button className="btn" variant="contained" color='secondary'>
+                Sign up
+              </Button>
+
+          </div> */}
+          <IconButton aria-controls="menu" aria-haspopup="true" onClick={handleClick}>
+            <MenuIcon fontSize="large" color="secondary" />
+          </IconButton>
+          <Menu
+            id="menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            <MenuItem onClick={handleClose}>Profile</MenuItem>
+            <MenuItem onClick={handleClose}>My account</MenuItem>
+            <MenuItem onClick={handleClose}>Logout</MenuItem>
+          </Menu>
+        </div>
+      </Toolbar>
+    </React.Fragment>
+  )
+}
+
 export default function Header(props) {
   const { width } = useViewport();
   const breakpoint = 1000;
-  return width > breakpoint ? <DesktopHeader /> : <h1>Smaller than breakpoint</h1>
+  return width > breakpoint ? <DesktopHeader /> : <MobileHeader />
 
 }
