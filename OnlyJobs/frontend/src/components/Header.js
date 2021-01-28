@@ -4,9 +4,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import '../componentStyles/header.css'
-import { IconButton, Input, Menu, MenuItem } from '@material-ui/core';
+import { Input } from '@material-ui/core';
 import { useViewport } from '../hooks'
-import MenuIcon from '@material-ui/icons/Menu'
+import MobileNav from './MobileNav';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -17,10 +18,17 @@ const useStyles = makeStyles((theme) => ({
     padding: '15px 50px',
     height: '66px'
   },
+  mobileHeader: {
+    borderBottom: `1px solid ${theme.palette.divider}`,
+    backgroundColor: theme.palette.primary.main,
+    color: '#FFFFFF',
+    padding: '15px 20px',
+    height: '66px'
+  },
   underline: {
     color: 'white',
     borderBottom: '2px solid white',
-    width: '25vw',    
+    width: '22vw',    
   },
   headerWrapper: {
     display: 'flex',
@@ -77,20 +85,11 @@ const DesktopHeader = () => {
 const MobileHeader = () => {
 
   const classes = useStyles();
-
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const {width} = useViewport();
 
   return (
     <React.Fragment>
-      <Toolbar className={classes.header} color="secondary" >
+      <Toolbar className={classes.mobileHeader} color="secondary" >
         <div className={classes.headerWrapper}>
           <Typography
             component="h2"
@@ -101,37 +100,21 @@ const MobileHeader = () => {
           >
             Only Jobs
           </Typography>
-
-          {/* <form autoComplete="off" noValidate >
+          {width > 650 ?
+            <form autoComplete="off" noValidate >
             <Input placeholder="Search by Job Title" variant="filled" inputProps={{'aria-label': 'description', className:classes.underline}} color='secondary'/>
             <div className="vr"></div>
             <Input placeholder="Search by Location" variant="filled" inputProps={{'aria-label': 'description', className:classes.underline}} color='secondary'/>
             <Button className={classes.searchButton} variant="contained" color="secondary">Search</Button>
-          </form> */}
-
-          {/* <div>
-              <Button className="btn" variant="outlined" color='secondary'>
-                Log In
-              </Button>
-              <Button className="btn" variant="contained" color='secondary'>
-                Sign up
-              </Button>
-
-          </div> */}
-          <IconButton aria-controls="menu" aria-haspopup="true" onClick={handleClick}>
-            <MenuIcon fontSize="large" color="secondary" />
-          </IconButton>
-          <Menu
-            id="menu"
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-          >
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
-            <MenuItem onClick={handleClose}>My account</MenuItem>
-            <MenuItem onClick={handleClose}>Logout</MenuItem>
-          </Menu>
+          </form> :
+          <></>}
+          
+          <Router>
+            <MobileNav />
+            <Switch>
+              <Route path='/' />
+            </Switch>
+          </Router>
         </div>
       </Toolbar>
     </React.Fragment>
@@ -140,7 +123,7 @@ const MobileHeader = () => {
 
 export default function Header(props) {
   const { width } = useViewport();
-  const breakpoint = 1000;
+  const breakpoint = 900;
   return width > breakpoint ? <DesktopHeader /> : <MobileHeader />
 
 }
