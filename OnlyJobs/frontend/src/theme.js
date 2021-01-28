@@ -10,6 +10,9 @@ export const theme = createMuiTheme({
       },
       boxBackground: {
         main: '#EEEEEE'
+      },
+      bodyBackground: {
+        main: '#133B571A'
       }
     }
   })
