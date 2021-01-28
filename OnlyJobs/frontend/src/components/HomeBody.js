@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import {  } from '@material-ui/core';
 import FilterCard from './FilterCard'
+import SalaryFilter from './SalaryFilter'
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -14,13 +15,15 @@ const useStyles = makeStyles((theme) => ({
     bodyContainer: {
         backgroundColor: theme.palette.boxBackground.main,
         width: '80vw',
-        height: '100px',
+        height: '140px',
         marginTop: '2rem',
         boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.25)',
         borderRadius: '10px',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
+        flexWrap: 'wrap',
+        alignContent: 'center'
     },
     
       
@@ -32,6 +35,9 @@ const jobTypeOptions = [
     },
     {
         value: 'Full-time'
+    },
+    {
+        value: 'Internship'
     }
 ]
 
@@ -90,16 +96,15 @@ const HomeBody = () => {
 
     return (
         <div className={classes.container}> 
-            <div className={classes.bodyContainer}>
 
-                <form>
+                <form className={classes.bodyContainer}>
                     <FilterCard name="jobType" state={jobType} setState={setJobType} labelName="Job Type" menuItems={jobTypeOptions} />
                     <FilterCard name="datePosted" state={datePosted} setState={setDatePosted} labelName="Date Posted" menuItems={datePostedOptions} />
                     <FilterCard name="remoteWorking" state={remoteWorking} setState={setRemoteWorking} labelName="Remote Working" menuItems={remoteWorkingOptions} />
                     <FilterCard name="companySize" state={companySize} setState={setCompanySize} labelName="Company Size" menuItems={companySizeOptions} />
+                    <SalaryFilter />
                 </form>
                 
-            </div>
         </div>
     )
 }
