@@ -1,13 +1,11 @@
-
 import './App.css';
-import SignUp from './components/authentication/SignUp'
-import LogIn from './components/authentication/LogIn' 
-import ForgotPassword from "./components/authentication/ForgotPassword"
+import HomePage from './components/HomePage';
+
 
 function App() {
   return (
     <div className="App">
-      <ForgotPassword />
+      <HomePage />
     </div>
   );
 }
