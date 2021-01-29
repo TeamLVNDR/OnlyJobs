@@ -1,0 +1,15 @@
+.test {
+    float: right;
+}
+
+.btn:not(:last-child) {
+    margin-right: 10px;
+}
+
+.vr {
+    box-sizing: border-box;
+    display: inline-block;
+    margin-bottom: -10px;
+    background-color: white;
+    width: 10px;;
+}

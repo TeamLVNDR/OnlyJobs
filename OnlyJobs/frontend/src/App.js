@@ -1,10 +1,12 @@
-
 import './App.css';
+import HomePage from './components/HomePage';
+
+
 
 function App() {
   return (
     <div className="App">
-      <p>Welcome to OnlyJobs</p>
+      <HomePage />
     </div>
   );
 }
