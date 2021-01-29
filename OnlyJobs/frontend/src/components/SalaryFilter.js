@@ -23,6 +23,16 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 400,
         fontSize: '1rem'
     },
+    buttonColorsActive: {
+        boxSizing: 'border-box',
+        color: theme.palette.primary.main,
+        // border: `2px solid ${theme.palette.primary.main}`,
+        boxShadow: `inset 0 0 0 1px ${theme.palette.primary.main}`,
+        backgroundColor: 'rgb(226, 226, 226)',
+        textTransform: 'none',
+        fontWeight: 400,
+        fontSize: '1rem'
+    }
 }))
 
 const marks = [
@@ -68,6 +78,7 @@ const SalaryFilter = () => {
 
     const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
+      
     };
   
     const handleClose = () => {
@@ -83,9 +94,13 @@ const SalaryFilter = () => {
   
     return (
       <>
-        <Button aria-describedby={id} variant="outlined" onClick={handleClick} endIcon={<ArrowDropDownIcon/>} color='inherit' className={classes.buttonColors}>
+        {open ? <Button aria-describedby={id} variant="outlined" onClick={handleClick} endIcon={<ArrowDropDownIcon/>} color='inherit' className={classes.buttonColorsActive}>
           Salary Expectation: {valuetext(salary) + '+'}
-        </Button>
+        </Button> 
+        : <Button aria-describedby={id} variant="outlined" onClick={handleClick} endIcon={<ArrowDropDownIcon/>} color='inherit' className={classes.buttonColors}>
+          Salary Expectation: {valuetext(salary) + '+'}
+        </Button> }
+        
         <Popover
           id={id}
           open={open}
