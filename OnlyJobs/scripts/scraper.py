@@ -47,10 +47,14 @@ def get_company(job_elem):
     return company
 
 def get_date_posted(job_elem):
-    date_posted = job_elem.find('div', class_='SuWscb')
-    posted = date_posted.text.strip()
-    return posted
+    date_elem = job_elem.find('span', class_='n1Mpqb')
+    date = date_elem.text.strip()
+    return date
 
+def get_job_description(job_elem):
+    job_description_elem = job_elem.find('span', class_='HBvzbc')
+    job_description = job_description_elem.text.strip()
+    return job_description
 
 
 job_elems = loadJobs()
@@ -59,7 +63,7 @@ job_elems = loadJobs()
 
 jobs = set()
 for job_elem in job_elems:
-    jobs.add((get_company(job_elem), get_title(job_elem), get_date_posted(job_elem)))
+    jobs.add((get_company(job_elem), get_title(job_elem), get_date_posted(job_elem), get_job_description(job_elem)))
 
 print(jobs)
 print(len(jobs))
