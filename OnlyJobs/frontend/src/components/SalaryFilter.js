@@ -84,7 +84,7 @@ const SalaryFilter = () => {
     return (
       <>
         <Button aria-describedby={id} variant="outlined" onClick={handleClick} endIcon={<ArrowDropDownIcon/>} color='inherit' className={classes.buttonColors}>
-          Salary Expectation
+          Salary Expectation: {valuetext(salary) + '+'}
         </Button>
         <Popover
           id={id}
