@@ -56,6 +56,13 @@ def get_job_description(job_elem):
     job_description = job_description_elem.text.strip()
     return job_description
 
+def get_job_location(job_elem):
+    job_location_elem = job_elem.find('div', class_='Qk80Jf')
+    if job_location_elem:
+        job_location = job_location_elem.text.strip()
+        return job_location
+
+
 
 job_elems = loadJobs()
 
@@ -63,7 +70,7 @@ job_elems = loadJobs()
 
 jobs = set()
 for job_elem in job_elems:
-    jobs.add((get_company(job_elem), get_title(job_elem), get_date_posted(job_elem), get_job_description(job_elem)))
+    jobs.add((get_company(job_elem), get_title(job_elem), get_date_posted(job_elem), get_job_description(job_elem), get_job_location(job_elem)))
 
 print(jobs)
 print(len(jobs))
