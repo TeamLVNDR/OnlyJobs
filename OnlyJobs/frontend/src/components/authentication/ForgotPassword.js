@@ -34,6 +34,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.25)',
+    padding: '30px 30px 30px 30px',
+    borderRadius: '10px'
   },
   avatar: {
     margin: theme.spacing(1),
@@ -46,23 +49,26 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  text: {
+      marginBottom: '30px'
+  }
 }));
 
 export default function SignIn() {
   const classes = useStyles();
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container className="containerStyle" component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
-        <Typography mb={10} component="h1" variant="h5">
+        <Typography className={classes.text} component="h1" variant="h5">
           Recover Password
         </Typography>
-        <Typography component="h2" variant="h7">
-            Please enter your email address. A verification code will be sent to you.
+        <Typography component="h4" variant="h7">
+            Please enter your email address. A verification code will be sent to you.  
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
@@ -88,7 +94,6 @@ export default function SignIn() {
         </form>
       </div>
       <Box mt={8}>
-        <Copyright />
       </Box>
     </Container>
   );
